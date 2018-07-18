@@ -28,6 +28,12 @@ int main(int ac, char **av)
   malist->msg = "bonjour\n";
   my_putstr(malist->msg);
   free(malist);
-  malist = create_list(malist, "52-68-46", '-');
+  malist = create_list(malist, "52-68-46-456", '-');
+  if (ac > 1)
+    {
+      create_list(malist, av[1], '-');
+    }
+  else
+    my_putstr("il n'y a pas de suite en argument");
   return 0;
 }
