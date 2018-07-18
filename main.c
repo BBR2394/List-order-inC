@@ -34,6 +34,6 @@ int main(int ac, char **av)
       create_list(malist, av[1], '-');
     }
   else
-    my_putstr("il n'y a pas de suite en argument");
+    my_putstr("il n'y a pas de suite en argument\n");
   return 0;
 }

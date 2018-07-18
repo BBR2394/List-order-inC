@@ -32,13 +32,20 @@ t_ma_list	*create_list(t_ma_list *lst, char *tpii, char sep)
 {
   int num_elem = 0;
   int longest_elem = 0;
+  char *buff = NULL;
+  t_main_data strct_data;
   
   my_putstr("-> in create list\n");
   my_putstr(tpii);
   my_putchar('\n');
   longest_elem = count_longest(tpii, sep);
   num_elem = my_strcount_char(tpii, sep);
+  
   printf("il y a %d separateur et donc %d elements\n", num_elem, num_elem + 1);
   printf("le plus grand element est de taille : %d \n", longest_elem);
+
+  buff = malloc(longest_elem * sizeof(char)); 
+  
+  free(buff);
   return lst;
 }

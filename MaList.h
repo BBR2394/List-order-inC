@@ -9,4 +9,13 @@ typedef struct s_ma_list
 
 }t_ma_list;
 
+typedef struct s_main_data
+{
+  int	longest_elem;
+  int	num_elem;
+
+  struct s_ma_list	*lst;
+  
+}t_main_data;
+
 #endif
