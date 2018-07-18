@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "my_str.h"
 #include "MaList.h"
@@ -27,14 +28,40 @@ int		count_longest(char *str, char sep)
   return lgst;
 }
 
+int	empty_buf(char *buf, int size)
+{
+  int i = 0;
+  while (i < size)
+    {
+      buf[i] = '\0';
+      i++;
+    }
+  return 0;
+}
+
+t_main_data	*insert_elem(t_main_data *lst, char *tpii, char sep, char *buf)
+{
+  int i = 0;
+  int ibuf = 0;
+  
+  while (tpii[i] != 0)
+    {
+      if (tpii[i] == sep)
+	{
+	  empty_buf(buf, count_longest(tpii, sep));
+	}
+      ibuf++;
+      i++;
+    }
+}
+
 /* tpii : to pu in it */
-t_ma_list	*create_list(t_ma_list *lst, char *tpii, char sep)
+t_main_data	*create_list(t_main_data *lst, char *tpii, char sep)
 {
   int num_elem = 0;
   int longest_elem = 0;
   char *buff = NULL;
-  t_main_data strct_data;
-  
+
   my_putstr("-> in create list\n");
   my_putstr(tpii);
   my_putchar('\n');
@@ -44,8 +71,9 @@ t_ma_list	*create_list(t_ma_list *lst, char *tpii, char sep)
   printf("il y a %d separateur et donc %d elements\n", num_elem, num_elem + 1);
   printf("le plus grand element est de taille : %d \n", longest_elem);
 
-  buff = malloc(longest_elem * sizeof(char)); 
-  
+  buff = malloc(longest_elem * sizeof(char));
+  empty_buf(buff, longest_elem);
+  insert_elem(lst, tpii, sep, buff);
   free(buff);
   return lst;
 }

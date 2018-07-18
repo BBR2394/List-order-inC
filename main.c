@@ -18,16 +18,13 @@ int print_arg(int ac, char **av)
 
 int main(int ac, char **av)
 {
-  t_ma_list *malist;
+  t_main_data	*malist;
 
   print_arg(ac, av);
   
-  malist = malloc(sizeof(t_ma_list));
+  malist = malloc(sizeof(t_main_data));
   write(1, "bonjour\n", 8);
   my_putstr("bonjour deux\n");
-  malist->msg = "bonjour\n";
-  my_putstr(malist->msg);
-  free(malist);
   malist = create_list(malist, "52-68-46-456", '-');
   if (ac > 1)
     {
@@ -35,5 +32,6 @@ int main(int ac, char **av)
     }
   else
     my_putstr("il n'y a pas de suite en argument\n");
+  free(malist);
   return 0;
 }

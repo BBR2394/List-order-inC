@@ -3,6 +3,6 @@
 
 # include "MaList.h"
 
-t_ma_list *create_list(t_ma_list *lst, char *, char );
+t_main_data *create_list(t_main_data *lst, char *, char );
 
 #endif
