@@ -43,19 +43,77 @@ t_main_data	*insert_elem(t_main_data *lst, char *tpii, char sep, char *buf)
 {
   int i = 0;
   int ibuf = 0;
+  t_ma_list *tmp = NULL;
+  t_ma_list *prev = NULL;
   
-  while (tpii[i] != 0)
+  while (tpii[i] != '\0')
     {
       if (tpii[i] == sep)
-	{
-	  empty_buf(buf, count_longest(tpii, sep));
-	}
-      ibuf++;
+	     {
+        if (ibuf != 0) {
+          tmp = malloc (sizeof(t_ma_list));
+          tmp->msg = malloc(sizeof(char) * my_strsize(buf));
+          tmp->msg = my_strcpy(tmp->msg, buf);
+          tmp->size = my_strsize(buf);
+          if (prev == NULL) {
+            lst->lst = tmp;
+            tmp->next = NULL;
+            prev = tmp;
+            my_putstr("dans insert elemn au debut ");
+            my_putstr(buf);
+            my_putchar('\n');
+          }
+          else
+          {
+            tmp->next = NULL;
+            prev->next = tmp;
+            prev = tmp;
+            my_putstr("dans insert elemn au apres ");
+            my_putstr(buf);
+            my_putchar('\n');
+          }
+        }
+	       empty_buf(buf, count_longest(tpii, sep));
+         ibuf = 0;
+	     }
+       else {
+        buf[ibuf] = tpii[i];
+        ibuf++;
+      }
       i++;
     }
+    if (ibuf != 0) {
+          tmp = malloc (sizeof(t_ma_list));
+          tmp->msg = malloc(sizeof(char) * my_strsize(buf));
+          tmp->msg = my_strcpy(tmp->msg, buf);
+          tmp->next = NULL;
+          tmp->size = my_strsize(buf);
+          prev->next = tmp;
+          prev = tmp;
+          my_putstr("dans insert elemn au a la fin ");
+          my_putstr(buf);
+          my_putchar('\n');
+        }
+    return 0;
 }
 
-/* tpii : to pu in it */
+int print_list(t_main_data *lst)
+{
+  t_ma_list *the_list = lst->lst;
+  int i = 0;
+  int stop = 0;
+
+  while (stop == 0) {
+    if (the_list->next == NULL)
+      stop = 1;
+    printf("Dans l'element %d\n ->  %s \n", i, the_list->msg);
+    i++;
+    the_list = the_list->next;
+  }
+  return 0;
+}
+
+/* tpii : to put in it */
 t_main_data	*create_list(t_main_data *lst, char *tpii, char sep)
 {
   int num_elem = 0;
@@ -74,6 +132,7 @@ t_main_data	*create_list(t_main_data *lst, char *tpii, char sep)
   buff = malloc(longest_elem * sizeof(char));
   empty_buf(buff, longest_elem);
   insert_elem(lst, tpii, sep, buff);
+  print_list(lst);
   free(buff);
   return lst;
 }

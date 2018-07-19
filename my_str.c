@@ -2,7 +2,7 @@
 
 int my_putchar(char c)
 {
-  write(1, &c, 1);
+  return write(1, &c, 1);
 }
 
 int my_putstr(char *str)
@@ -12,8 +12,7 @@ int my_putstr(char *str)
       my_putchar(str[0]);
       my_putstr(&str[1]);
     }
-  else
-    return 0;
+  return 0;
 }
 
 int my_strcount_char(char *str, char car)
@@ -24,7 +23,7 @@ int my_strcount_char(char *str, char car)
   while (str[i] != '\0')
     {
       if (str[i] == car)
-	count += 1;
+	     count += 1;
       i++;
     }
   return count;
@@ -36,4 +35,16 @@ int my_strsize(char *str)
   while (str[i] != '\0')
     i++;
   return i;
+}
+
+char *my_strcpy(char *dest, char *rec)
+{
+  int i = 0;
+
+  while (rec[i] != '\0') 
+  {
+    dest[i] = rec[i];
+    i++;
+  }
+  return dest;
 }
