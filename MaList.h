@@ -5,6 +5,7 @@ typedef struct s_ma_list
 {
   unsigned int i;
   char *msg;
+  int size;
   struct s_ma_list *next;
 
 }t_ma_list;
