@@ -5,6 +5,7 @@
 #include "rien.h"
 #include "my_str.h"
 #include "MaList.h"
+#include "base.h"
 
 int print_arg(int ac, char **av)
 {
@@ -19,7 +20,7 @@ int print_arg(int ac, char **av)
 int main(int ac, char **av)
 {
   t_main_data	*malist;
-
+  t_base *strct_base;
   print_arg(ac, av);
   
   malist = malloc(sizeof(t_main_data));
@@ -32,6 +33,7 @@ int main(int ac, char **av)
     }
   else
     my_putstr("il n'y a pas de suite en argument\n");
+  // set_base("0123456789", 10, strct_base);
   free(malist);
   return 0;
 }
