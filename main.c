@@ -26,6 +26,9 @@ int main(int ac, char **av)
   malist = malloc(sizeof(t_main_data));
   write(1, "bonjour\n", 8);
   my_putstr("bonjour deux\n");
+  strct_base = malloc(sizeof(t_base));
+  set_base("0123456789", 10, strct_base);
+
   malist = create_list(malist, "52-68-46-456", '-');
   if (ac > 1)
     {
@@ -33,7 +36,7 @@ int main(int ac, char **av)
     }
   else
     my_putstr("il n'y a pas de suite en argument\n");
-  // set_base("0123456789", 10, strct_base);
+
   free(malist);
   return 0;
 }
