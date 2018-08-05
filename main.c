@@ -5,6 +5,7 @@
 #include "rien.h"
 #include "my_str.h"
 #include "MaList.h"
+#include "order_list.h"
 #include "base.h"
 
 int print_arg(int ac, char **av)
@@ -37,6 +38,8 @@ int main(int ac, char **av)
   else
     my_putstr("il n'y a pas de suite en argument\n");
 
+  int opt = 1;
+  order_list(strct_base, malist, opt);
   free(malist);
   return 0;
 }
