@@ -14,5 +14,5 @@ int	set_base(char *usedchar, int base, t_base *strctbase)
   my_putstr(strctbase->character_used);
   my_putchar('\n');
   
-  
+  return -1;
 }

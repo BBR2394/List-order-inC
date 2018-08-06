@@ -55,6 +55,7 @@ t_main_data	*insert_elem(t_main_data *lst, char *tpii, char sep, char *buf)
           tmp->msg = malloc(sizeof(char) * my_strsize(buf));
           tmp->msg = my_strcpy(tmp->msg, buf);
           tmp->size = my_strsize(buf);
+          tmp->num = atoi(tmp->msg);
           if (prev == NULL) {
             lst->lst = tmp;
             tmp->next = NULL;
@@ -86,6 +87,7 @@ t_main_data	*insert_elem(t_main_data *lst, char *tpii, char sep, char *buf)
           tmp = malloc (sizeof(t_ma_list));
           tmp->msg = malloc(sizeof(char) * my_strsize(buf));
           tmp->msg = my_strcpy(tmp->msg, buf);
+          tmp->num = atoi(tmp->msg);
           tmp->next = NULL;
           tmp->size = my_strsize(buf);
           prev->next = tmp;
@@ -106,7 +108,7 @@ int print_list(t_main_data *lst)
   while (stop == 0) {
     if (the_list->next == NULL)
       stop = 1;
-    printf("Dans l'element %d\n ->  %s \n", i, the_list->msg);
+    printf("Dans l'element %d\n ->  %s  et en int : %d \n", i, the_list->msg, the_list->num);
     i++;
     the_list = the_list->next;
   }

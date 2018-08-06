@@ -3,7 +3,7 @@
 
 typedef struct s_ma_list
 {
-  unsigned int i;
+  unsigned int num;
   char *msg;
   int size;
   struct s_ma_list *next;

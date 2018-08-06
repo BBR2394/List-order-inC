@@ -4,6 +4,6 @@
 #include "rien.h"
 #include "MaList.h"
 
-int     order_list(t_main_data *strct, t_ma_list *lst, int);
+int	order_list(t_main_data *strct, int opt);
 
 #endif
