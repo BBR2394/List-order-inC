@@ -115,6 +115,22 @@ int print_list(t_main_data *lst)
   return 0;
 }
 
+int print_list_whithout_main_data(t_ma_list *lst)
+{
+  t_ma_list *the_list = lst;
+  int i = 0;
+  int stop = 0;
+
+  while (stop == 0) {
+    if (the_list->next == NULL)
+      stop = 1;
+    printf("Dans l'element %d\n ->  %s  et en int : %d \n", i, the_list->msg, the_list->num);
+    i++;
+    the_list = the_list->next;
+  }
+  return 0;
+}
+
 /* tpii : to put in it */
 t_main_data	*create_list(t_main_data *lst, char *tpii, char sep)
 {

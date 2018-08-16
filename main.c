@@ -38,7 +38,7 @@ int main(int ac, char **av)
   else
     my_putstr("il n'y a pas de suite en argument\n");
 
-  int opt = 1;
+  int opt = 2;
 
   order_list(malist, opt);
   free(malist);
