@@ -99,35 +99,23 @@ t_main_data	*insert_elem(t_main_data *lst, char *tpii, char sep, char *buf)
     return 0;
 }
 
-int print_list(t_main_data *lst)
+int print_list(t_ma_list *lst)
 {
-  t_ma_list *the_list = lst->lst;
-  int i = 0;
-  int stop = 0;
+  int counter = 0;
 
-  while (stop == 0) {
-    if (the_list->next == NULL)
-      stop = 1;
-    printf("Dans l'element %d\n ->  %s  et en int : %d \n", i, the_list->msg, the_list->num);
-    i++;
-    the_list = the_list->next;
+  while (lst != NULL) {
+    printf("Dans l'element %d\n ->  %s  et en int : %d \n", counter, lst->msg, lst->num);
+    counter++;
+    lst = lst->next;
   }
   return 0;
 }
 
-int print_list_whithout_main_data(t_ma_list *lst)
+int print_list_main_data(t_main_data *md)
 {
-  t_ma_list *the_list = lst;
-  int i = 0;
-  int stop = 0;
+  t_ma_list *lst = md->lst;
 
-  while (stop == 0) {
-    if (the_list->next == NULL)
-      stop = 1;
-    printf("Dans l'element %d\n ->  %s  et en int : %d \n", i, the_list->msg, the_list->num);
-    i++;
-    the_list = the_list->next;
-  }
+  print_list(lst);
   return 0;
 }
 
@@ -150,7 +138,7 @@ t_main_data	*create_list(t_main_data *lst, char *tpii, char sep)
   buff = malloc(longest_elem * sizeof(char));
   empty_buf(buff, longest_elem);
   insert_elem(lst, tpii, sep, buff);
-  print_list(lst);
+  print_list_main_data(lst);
   free(buff);
   return lst;
 }
