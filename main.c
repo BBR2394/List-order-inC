@@ -20,27 +20,29 @@ int print_arg(int ac, char **av)
 
 int main(int ac, char **av)
 {
-  t_main_data	*malist;
+  t_main_data	*main_data;
   t_base *strct_base;
   print_arg(ac, av);
   
-  malist = malloc(sizeof(t_main_data));
+  main_data = malloc(sizeof(t_main_data));
   write(1, "bonjour\n", 8);
   my_putstr("bonjour deux\n");
   strct_base = malloc(sizeof(t_base));
   set_base("0123456789", 10, strct_base);
 
-  malist = create_list(malist, "52-68-46-456", '-');
+  main_data = create_list(main_data, "52-68-46-456-12-78-65-98-159-357-4568", '-');
   if (ac > 1)
     {
-      create_list(malist, av[1], '-');
+      create_list(main_data, av[1], '-');
     }
   else
     my_putstr("il n'y a pas de suite en argument\n");
 
   int opt = 2;
 
-  order_list(malist, opt);
-  free(malist);
+  order_list(main_data, opt);
+  my_putstr("le resultat : \n");
+  print_list(main_data);
+  // free(main_data);
   return 0;
 }

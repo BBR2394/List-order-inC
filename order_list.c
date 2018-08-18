@@ -8,10 +8,10 @@
 t_ma_list		*find_minimum(t_ma_list *lst)
 {
 	int min = lst->num;
-	t_ma_list *le_min = NULL;
+	t_ma_list *le_min = lst;
 
 	lst = lst->next;
-	while (lst->next != NULL)
+	while (lst != NULL)
 	{
 		if (lst->num < min)
 		{
@@ -20,14 +20,20 @@ t_ma_list		*find_minimum(t_ma_list *lst)
 		}
 		lst = lst->next;
 	}
-	printf("le minimum est %d\n", le_min->num);
+	if (lst == NULL)
+		return le_min;
 	return le_min;
 }
 
-t_ma_list		*change_place_min_irst_and_remove_it(t_ma_list *min, t_ma_list *lst)
+t_ma_list		*change_place_min_first_and_remove_it(t_ma_list *min, t_ma_list *lst)
 {
 	t_ma_list *prev = NULL;
 	t_ma_list *tmp = lst;
+
+	if (tmp == min) {
+		return min;
+	}
+
 	while (tmp != min)
 	{
 		prev = tmp;
@@ -42,15 +48,24 @@ int 	selection_sort(t_main_data *st)
 {
 	t_ma_list *tmp = st->lst;
 	t_ma_list *le_min = find_minimum(tmp);
-	tmp = change_place_min_irst_and_remove_it(le_min, tmp);
+	t_ma_list *niou_lst = NULL;
+	t_ma_list *to_return = NULL;
+	tmp = change_place_min_first_and_remove_it(le_min, tmp);
+	
+	le_min = NULL;
+	niou_lst = tmp;
+	to_return = tmp;
+	tmp = tmp->next;
 
-	my_putstr("ici je vais afficher la liste apres le changement du minimun \n");
-	print_list_whithout_main_data(tmp);
 	while (tmp->next != NULL) 
 	{
+		le_min = find_minimum(tmp);
+		tmp = change_place_min_first_and_remove_it(le_min, tmp);
+		niou_lst->next = tmp;
+		niou_lst = niou_lst->next;
 		tmp = tmp->next;
 	}
-
+	st->lst = to_return;
 	return 0;
 }
 
