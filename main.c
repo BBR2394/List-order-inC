@@ -7,6 +7,7 @@
 #include "MaList.h"
 #include "order_list.h"
 #include "base.h"
+#include "free_everything.h"
 
 int print_arg(int ac, char **av)
 {
@@ -43,6 +44,7 @@ int main(int ac, char **av)
   order_list(main_data, opt);
   my_putstr("le resultat : \n");
   print_list_main_data(main_data);
+  free_everything(main_data);
   // free(main_data);
   return 0;
 }

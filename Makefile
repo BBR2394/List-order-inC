@@ -3,12 +3,13 @@ CC	=	gcc
 
 NAME	 =	orderList.out 
 
-SRC	=	main.c \
-		my_str.c \
-		base.c \
-		check_opt.c \
-		create_list.c \
-		order_list.c 
+SRC	=	main.c 		\
+		my_str.c 	\
+		base.c 		\
+		check_opt.c 	\
+		create_list.c 	\
+		order_list.c 	\
+		free_everything.c
 
 FLAG	=	-W -Wall
 
