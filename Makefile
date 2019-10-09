@@ -10,7 +10,8 @@ SRC	=	main.c 		\
 		create_list.c 	\
 		order_list.c 	\
 		selection_sort.c \
-		bubble_sort.c \
+		bubble_sort.c 	\
+		insertion_sort.c \
 		free_everything.c
 
 FLAG	=	-W -Wall
